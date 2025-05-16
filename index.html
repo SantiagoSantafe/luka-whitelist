@@ -1,464 +1,849 @@
-/* Dashboard.css */
-.dashboard-container {
-  max-width: 100%;
-  padding: 0;
-  font-family: 'Inter', 'Arial', sans-serif;
-  color: #333;
-  background-color: #f5f7fa;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header styles */
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background-color: #004d66;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.5rem;
-}
-
-.logo span {
-  color: white;
-  font-weight: 700;
-  font-size: 1.25rem;
-}
-
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #004d66;
-  margin: 0;
-}
-
-.user-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  position: relative;
-}
-
-.notification-button {
-  position: relative;
-  background: none;
-  border: none;
-  color: #666;
-  cursor: pointer;
-  padding: 0.25rem;
-}
-
-.notification-badge {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: #e74c3c;
-  color: white;
-  font-size: 0.7rem;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  cursor: pointer;
-}
-
-/* Profile dropdown */
-.profile-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  width: 280px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 200;
-  overflow: hidden;
-}
-
-.profile-header {
-  padding: 1.25rem;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.profile-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 1rem;
-}
-
-.profile-info h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0 0 0.25rem;
-}
-
-.profile-status {
-  font-size: 0.8rem;
-  color: #27ae60;
-  margin: 0;
-}
-
-.profile-menu-items {
-  padding: 0.75rem 0;
-}
-
-.profile-menu-item {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1.25rem;
-  color: #333;
-  text-decoration: none;
-  transition: background-color 0.2s;
-}
-
-.profile-menu-item:hover {
-  background-color: #f8f9fa;
-}
-
-.profile-menu-item svg {
-  margin-right: 0.75rem;
-  color: #666;
-}
-
-.profile-footer {
-  padding: 1rem 1.25rem;
-  border-top: 1px solid #f0f0f0;
-}
-
-.logout-button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #f8f9fa;
-  color: #e74c3c;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.logout-button:hover {
-  background-color: #fee2e2;
-}
-
-/* Content styles */
-.dashboard-content {
-  flex: 1;
-  padding: 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Back button */
-.back-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: none;
-  border: none;
-  color: #004d66;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  margin-bottom: 1.5rem;
-  padding: 0.5rem;
-  border-radius: 8px;
-  transition: background-color 0.2s;
-}
-
-.back-button:hover {
-  background-color: rgba(0, 77, 102, 0.05);
-}
-
-/* Welcome section */
-.welcome-section {
-  text-align: left;
-  margin-bottom: 1.5rem;
-}
-
-.welcome-message {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-/* Credit score styles */
-.greeting-section {
-  padding: 0.5rem 0;
-  margin-bottom: 1.5rem;
-}
-
-.credit-score-container {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-.credit-score-circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 2px solid #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.credit-score-inner {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #004d66 0%, #0077a2 100%);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  text-align: center;
-}
-
-.credit-score-label {
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  opacity: 0.9;
-}
-
-.credit-score-value {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  text-decoration: underline;
-}
-
-.credit-score-message {
-  font-size: 0.85rem;
-  opacity: 0.9;
-}
-
-/* Credit info section */
-.credit-info-section {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin-bottom: 1.5rem;
-}
-
-.credit-info-section h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-  color: #333;
-  text-align: left;
-}
-
-/* Credit details grid */
-.credit-details-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.credit-detail-card {
-  border-radius: 8px;
-  padding: 1.25rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 80px;
-  transition: transform 0.2s;
-}
-
-.credit-detail-card:hover {
-  transform: translateY(-2px);
-}
-
-.credit-detail-card.dark {
-  background-color: #004d66;
-  color: white;
-}
-
-.credit-detail-card.light {
-  background-color: #e8f4ff;
-  color: #004d66;
-}
-
-.detail-label {
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.detail-value {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-/* Action buttons */
-.action-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.action-button {
-  padding: 1rem;
-  border-radius: 8px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 1rem;
-  text-align: center;
-  transition: all 0.2s;
-}
-
-.action-button.primary {
-  background-color: #004d66;
-  color: white;
-}
-
-.action-button.primary:hover {
-  background-color: #003b50;
-}
-
-.action-button.secondary {
-  background-color: #f8f9fa;
-  color: #004d66;
-  border: 1px solid #004d66;
-}
-
-.action-button.secondary:hover {
-  background-color: #e9ecef;
-}
-
-/* Bottom Navigation */
-.bottom-nav {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  background-color: #fff;
-  border-top: 1px solid #e0e0e0;
-  padding: 0.75rem 0;
-  position: sticky;
-  bottom: 0;
-  z-index: 100;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #999;
-  text-decoration: none;
-  font-size: 0.75rem;
-  transition: all 0.2s;
-}
-
-.nav-item span {
-  margin-top: 0.25rem;
-}
-
-.nav-item.active {
-  color: #004d66;
-}
-
-/* Loading overlay */
-.loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid rgba(0, 77, 102, 0.1);
-  border-radius: 50%;
-  border-top-color: #004d66;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .credit-details-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .dashboard-content {
-    padding: 1rem;
-  }
-  
-  .credit-score-circle {
-    width: 180px;
-    height: 180px;
-  }
-  
-  .credit-score-inner {
-    width: 160px;
-    height: 160px;
-  }
-}
-
-@media (max-width: 480px) {
-  .profile-dropdown {
-    width: 260px;
-  }
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luka Financiera - Acceso Anticipado</title>
+    <style>
+        :root {
+            --primary: #004d66;
+            --secondary: #e0e0e0;
+            --background: #f5f7fa;
+            --white: #ffffff;
+            --success: #34c38f;
+            --text: #333333;
+            --text-light: #666666;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-right: 0.5rem;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 80px 0 120px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), #006d8f);
+            color: var(--white);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .form-section {
+            padding: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: -100px;
+        }
+        
+        .benefits {
+            flex-basis: 48%;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+        }
+        
+        .benefits h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .benefits h2:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+        
+        .benefit-icon {
+            background-color: var(--primary);
+            min-width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+        
+        .benefit-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+        
+        .benefit-text p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .signup-form {
+            flex-basis: 48%;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+        }
+        
+        .signup-form h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .signup-form h2:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 77, 102, 0.2);
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #003b50;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .success-message {
+            display: none;
+            background-color: var(--success);
+            color: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        footer {
+            background-color: #2f2f3a;
+            color: var(--white);
+            padding: 50px 0 20px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            flex-basis: 30%;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links {
+            flex-basis: 20%;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        } 0.6);
+        }
+        
+        /* Media queries */
+        @media (max-width: 992px) {
+            .benefits, .signup-form {
+                flex-basis: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-section {
+                margin-top: -60px;
+            }
+            
+            .benefits, .signup-form {
+                padding: 30px;
+            }
+            
+            .footer-logo, .footer-links {
+                flex-basis: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .benefits, .signup-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <div class="logo"><span>L</span></div>
+                <h1 class="logo-text">luka</h1>
+            </div>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <div class="container">
+            <h1>Acceso Anticipado a Luka Financiera</h1>
+            <p>Sé parte de la revolución financiera que está transformando el acceso a microcréditos en Colombia. Únetenos para ser uno de los primeros en experimentar nuestra plataforma.</p>
+        </div>
+    </div>
+    
+    <div class="container form-section">
+        <div class="benefits">
+            <h2>Beneficios de Unirte a Nuestra Whitelist</h2>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">1</div>
+                <div class="benefit-text">
+                    <h3>Acceso Prioritario</h3>
+                    <p>Serás uno de los primeros en utilizar nuestra plataforma cuando esté disponible, sin tiempos de espera.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">2</div>
+                <div class="benefit-text">
+                    <h3>Comisiones Reducidas</h3>
+                    <p>Los miembros de la whitelist disfrutarán de tarifas preferenciales durante los primeros 6 meses.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">3</div>
+                <div class="benefit-text">
+                    <h3>Bonificación Especial</h3>
+                    <p>Recibe un 5% adicional en tu primera inversión o tasa preferencial en tu primer microcrédito.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">4</div>
+                <div class="benefit-text">
+                    <h3>Soporte Personalizado</h3>
+                    <p>Tendrás acceso a un canal exclusivo de soporte con atención prioritaria y orientación financiera.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">5</div>
+                <div class="benefit-text">
+                    <h3>Programa de Referidos</h3>
+                    <p>Acceso temprano a nuestro programa de recompensas por referir a nuevos usuarios.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="signup-form">
+            <h2>Regístrate para Acceso Anticipado</h2>
+            
+            <form id="whitelistForm">
+                <div class="form-group">
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Número de Teléfono</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+57 300 123 4567">
+                </div>
+                
+                <div class="form-group">
+                    <label for="userType">¿Qué te interesa más?</label>
+                    <select id="userType" name="userType" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="borrower">Solicitar microcréditos</option>
+                        <option value="investor">Invertir en microcréditos</option>
+                        <option value="both">Ambas opciones</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="referral">¿Cómo te enteraste de Luka? (Opcional)</label>
+                    <input type="text" id="referral" name="referral" placeholder="Redes sociales, amigos, etc.">
+                </div>
+                
+                <button type="submit">Unirme a la Whitelist</button>
+                
+                <div class="success-message" id="successMessage">
+                    ¡Gracias por registrarte! Te has unido exitosamente a nuestra lista de acceso anticipado. Pronto recibirás más información en tu correo.
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-container">
+                        <div class="logo"><span>L</span></div>
+                        <h3 class="logo-text">luka</h3>
+                    </div>
+                    <p style="margin-top: 20px; opacity: 0.7;">Microcréditos rápidos, éticos y seguros para personas excluidas del sistema financiero tradicional, conectando inversionistas con prestatarios mediante blockchain e inteligencia artificial.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Luka</h3>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Cómo Funciona</a></li>
+                        <li><a href="#">Para Inversionistas</a></li>
+                        <li><a href="#">Para Prestatarios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Seguridad</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Luka Financiera. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Formulario que envía datos a Webhook.site
+        document.getElementById('whitelistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener datos del formulario
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const userType = formData.get('userType');
+            const referral = formData.get('referral') || 'No especificado';
+            
+            // Mostrar indicador de carga
+            const button = this.querySelector('button[type="submit"]');
+            const originalButtonText = button.textContent;
+            button.textContent = 'Procesando...';
+            button.disabled = true;
+            
+            // Datos JSON para enviar
+            const data = {
+                name: name,
+                email: email,
+                phone: phone,
+                userType: userType,
+                referral: referral,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Enviar a tu Webhook.site específica
+            fetch('https://webhook.site/39a82e6b-d393-4711-b860-224701ed1317', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Mostrar mensaje de éxito
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // También crear un archivo local como respaldo
+                    const element = document.createElement('a');
+                    const fileContent = JSON.stringify(data, null, 2);
+                    
+                    const blob = new Blob([fileContent], { type: 'application/json' });
+                    element.href = URL.createObjectURL(blob);
+                    element.download = `luka-whitelist-${email.replace('@', '-at-')}.json`;
+                    document.body.appendChild(element);
+                    element.click();
+                    document.body.removeChild(element);
+                    
+                    // Limpiar formulario
+                    this.reset();
+                    
+                    // Scroll al mensaje de éxito
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    throw new Error('Error en el servidor');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un problema al procesar tu registro. Por favor, intenta nuevamente.');
+            })
+            .finally(() => {
+                // Restaurar botón
+                button.textContent = originalButtonText;
+                button.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html> 0.6);
+        }
+        
+        /* Media queries */
+        @media (max-width: 992px) {
+            .benefits, .signup-form {
+                flex-basis: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-section {
+                margin-top: -60px;
+            }
+            
+            .benefits, .signup-form {
+                padding: 30px;
+            }
+            
+            .footer-logo, .footer-links {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span>L</span>luka
+            </div>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <div class="container">
+            <h1>Acceso Exclusivo Anticipado</h1>
+            <p>Sé parte de la revolución financiera que está transformando el acceso a microcréditos en Colombia. Regístrate para ser uno de los primeros en experimentar Luka.</p>
+        </div>
+    </div>
+    
+    <div class="container form-section">
+        <div class="benefits">
+            <h2>Beneficios de Unirte a Nuestra Whitelist</h2>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">1</div>
+                <div class="benefit-text">
+                    <h3>Acceso Prioritario</h3>
+                    <p>Serás uno de los primeros en utilizar nuestra plataforma cuando esté disponible, sin tiempos de espera.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">2</div>
+                <div class="benefit-text">
+                    <h3>Comisiones Reducidas</h3>
+                    <p>Los miembros de la whitelist disfrutarán de tarifas preferenciales durante los primeros 6 meses.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">3</div>
+                <div class="benefit-text">
+                    <h3>Bonificación Especial</h3>
+                    <p>Recibe un crédito extra del 5% en tu primera inversión o un beneficio especial en tu primer microcrédito.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">4</div>
+                <div class="benefit-text">
+                    <h3>Soporte Personalizado</h3>
+                    <p>Tendrás acceso a un canal exclusivo de soporte con atención prioritaria.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">5</div>
+                <div class="benefit-text">
+                    <h3>Programa de Referidos</h3>
+                    <p>Acceso temprano a nuestro programa de recompensas por referir a nuevos usuarios.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="signup-form">
+            <h2>Regístrate para Acceso Anticipado</h2>
+            
+            <form id="whitelistForm">
+                <div class="form-group">
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Número de Teléfono</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+57 300 123 4567">
+                </div>
+                
+                <div class="form-group">
+                    <label for="userType">¿Qué te interesa más?</label>
+                    <select id="userType" name="userType" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="borrower">Solicitar microcréditos</option>
+                        <option value="investor">Invertir en microcréditos</option>
+                        <option value="both">Ambas opciones</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="referral">¿Cómo te enteraste de Luka? (Opcional)</label>
+                    <input type="text" id="referral" name="referral" placeholder="Redes sociales, amigos, etc.">
+                </div>
+                
+                <button type="submit">Unirme a la Whitelist</button>
+                
+                <div class="success-message" id="successMessage">
+                    ¡Gracias por registrarte! Te has unido exitosamente a nuestra lista de acceso anticipado. Pronto recibirás más información en tu correo.
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <span>L</span>luka
+                    </div>
+                    <p style="margin-top: 20px; opacity: 0.7;">Microcréditos rápidos, éticos y seguros para personas excluidas del sistema financiero tradicional, conectando inversionistas con prestatarios mediante blockchain e inteligencia artificial.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Luka</h3>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Cómo Funciona</a></li>
+                        <li><a href="#">Para Inversionistas</a></li>
+                        <li><a href="#">Para Prestatarios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Calculadora</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Seguridad</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Luka Financiera. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Formulario simple que envía datos a Webhook.site
+        document.getElementById('whitelistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener datos del formulario
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const userType = formData.get('userType');
+            const referral = formData.get('referral') || 'No especificado';
+            
+            // Mostrar indicador de carga
+            const button = this.querySelector('button[type="submit"]');
+            const originalButtonText = button.textContent;
+            button.textContent = 'Procesando...';
+            button.disabled = true;
+            
+            // Datos JSON para enviar
+            const data = {
+                name: name,
+                email: email,
+                phone: phone,
+                userType: userType,
+                referral: referral,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Enviar a tu Webhook.site específica
+            fetch('https://webhook.site/39a82e6b-d393-4711-b860-224701ed1317', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Mostrar mensaje de éxito
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // También crear un archivo local como respaldo
+                    const element = document.createElement('a');
+                    const fileContent = JSON.stringify(data, null, 2);
+                    
+                    const blob = new Blob([fileContent], { type: 'application/json' });
+                    element.href = URL.createObjectURL(blob);
+                    element.download = `luka-whitelist-${email.replace('@', '-at-')}.json`;
+                    document.body.appendChild(element);
+                    element.click();
+                    document.body.removeChild(element);
+                    
+                    // Limpiar formulario
+                    this.reset();
+                    
+                    // Scroll al mensaje de éxito
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    throw new Error('Error en el servidor');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un problema al procesar tu registro. Por favor, intenta nuevamente.');
+            })
+            .finally(() => {
+                // Restaurar botón
+                button.textContent = originalButtonText;
+                button.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
