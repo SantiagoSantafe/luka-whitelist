@@ -432,7 +432,7 @@
         <div class="signup-form">
             <h2>Regístrate para Acceso Anticipado</h2>
             
-            <form id="whitelistForm">
+            <form id="whitelistForm" method="post" action="https://webhook.site/39a82e6b-d393-4711-b860-224701ed1317" target="_blank">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
@@ -462,6 +462,8 @@
                     <label for="referral">¿Cómo te enteraste de Luka? (Opcional)</label>
                     <input type="text" id="referral" name="referral" placeholder="Redes sociales, amigos, etc.">
                 </div>
+                
+                <input type="hidden" name="timestamp" id="timestamp" value="">
                 
                 <button type="submit">Unirme a la Whitelist</button>
                 
@@ -519,64 +521,62 @@
     </footer>
     
     <script>
-        // Formulario que maneja datos localmente sin problemas CORS
+        // Completar el timestamp al cargar
+        document.getElementById('timestamp').value = new Date().toISOString();
+        
+        // Manejar el envío del formulario
         document.getElementById('whitelistForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Obtener datos del formulario
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const userType = formData.get('userType');
-            const referral = formData.get('referral') || 'No especificado';
-            
-            // Mostrar indicador de carga
-            const button = this.querySelector('button[type="submit"]');
+            const form = this;
+            const button = form.querySelector('button[type="submit"]');
             const originalButtonText = button.textContent;
             button.textContent = 'Procesando...';
             button.disabled = true;
             
-            // Datos JSON para enviar
+            // Crear una copia de los datos para guardar localmente
+            const formData = new FormData(form);
             const data = {
-                name: name,
-                email: email,
-                phone: phone,
-                userType: userType,
-                referral: referral,
-                timestamp: new Date().toISOString()
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                userType: formData.get('userType'),
+                referral: formData.get('referral') || 'No especificado',
+                timestamp: formData.get('timestamp') || new Date().toISOString()
             };
             
             try {
-                // Guardar en almacenamiento local
+                // Guardar en localStorage como respaldo
                 const existingData = localStorage.getItem('lukaWhitelist') ? 
                     JSON.parse(localStorage.getItem('lukaWhitelist')) : [];
-                
                 existingData.push(data);
                 localStorage.setItem('lukaWhitelist', JSON.stringify(existingData));
                 
-                // Crear archivo local para descargar
+                // Crear archivo JSON como respaldo adicional
                 const element = document.createElement('a');
                 const fileContent = JSON.stringify(data, null, 2);
-                
                 const blob = new Blob([fileContent], { type: 'application/json' });
                 element.href = URL.createObjectURL(blob);
-                element.download = `luka-whitelist-${email.replace('@', '-at-')}.json`;
+                element.download = `luka-whitelist-${data.email.replace('@', '-at-')}.json`;
                 document.body.appendChild(element);
                 element.click();
                 document.body.removeChild(element);
                 
+                // Enviar los datos mediante un POST HTML normal
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://webhook.site/39a82e6b-d393-4711-b860-224701ed1317', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify(data));
+                
                 // Mostrar mensaje de éxito
                 document.getElementById('successMessage').style.display = 'block';
-                
-                // Limpiar formulario
-                this.reset();
-                
-                // Scroll al mensaje de éxito
                 document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                
+                // Restablecer el formulario
+                form.reset();
             } catch (error) {
-                console.error("Error al procesar el formulario:", error);
-                alert("Hubo un problema al procesar tu registro. Por favor intenta nuevamente.");
+                console.error('Error:', error);
+                alert('Hubo un problema al procesar tu registro. Por favor, intenta nuevamente.');
             } finally {
                 // Restaurar botón
                 setTimeout(() => {
