@@ -400,8 +400,8 @@
             <div class="benefit-item">
                 <div class="benefit-icon">2</div>
                 <div class="benefit-text">
-                    <h3>Comisiones Reducidas</h3>
-                    <p>Los miembros de la whitelist disfrutarán de tarifas preferenciales durante los primeros 6 meses.</p>
+                    <h3>Acceso a Tasas Preferenciales</h3>
+                    <p>Tendrás acceso exclusivo a microcréditos con tasas de interés más favorables durante el lanzamiento.</p>
                 </div>
             </div>
             
@@ -520,7 +520,7 @@
     </footer>
     
     <script>
-        // Formulario que envía datos a Webhook.site
+        // Formulario que maneja datos localmente para evitar problemas CORS
         document.getElementById('whitelistForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -548,48 +548,38 @@
                 timestamp: new Date().toISOString()
             };
             
-            // Enviar a tu Webhook.site específica
-            fetch('https://webhook.site/39a82e6b-d393-4711-b860-224701ed1317', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Mostrar mensaje de éxito
-                    document.getElementById('successMessage').style.display = 'block';
-                    
-                    // También crear un archivo local como respaldo
-                    const element = document.createElement('a');
-                    const fileContent = JSON.stringify(data, null, 2);
-                    
-                    const blob = new Blob([fileContent], { type: 'application/json' });
-                    element.href = URL.createObjectURL(blob);
-                    element.download = `luka-whitelist-${email.replace('@', '-at-')}.json`;
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                    
-                    // Limpiar formulario
-                    this.reset();
-                    
-                    // Scroll al mensaje de éxito
-                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    throw new Error('Error en el servidor');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Hubo un problema al procesar tu registro. Por favor, intenta nuevamente.');
-            })
-            .finally(() => {
-                // Restaurar botón
+            // Guardar en almacenamiento local (alternativa a webhook para evitar CORS)
+            const existingData = localStorage.getItem('lukaWhitelist') ? 
+                JSON.parse(localStorage.getItem('lukaWhitelist')) : [];
+            
+            existingData.push(data);
+            localStorage.setItem('lukaWhitelist', JSON.stringify(existingData));
+            
+            // Crear archivo local para descargar
+            const element = document.createElement('a');
+            const fileContent = JSON.stringify(data, null, 2);
+            
+            const blob = new Blob([fileContent], { type: 'application/json' });
+            element.href = URL.createObjectURL(blob);
+            element.download = `luka-whitelist-${email.replace('@', '-at-')}.json`;
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            
+            // Mostrar mensaje de éxito
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Limpiar formulario
+            this.reset();
+            
+            // Scroll al mensaje de éxito
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            
+            // Restaurar botón
+            setTimeout(() => {
                 button.textContent = originalButtonText;
                 button.disabled = false;
-            });
+            }, 1000);
         });
     </script>
 </body>
